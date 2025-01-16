@@ -3,15 +3,15 @@
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 
 var newSite = 'https://ratnathicam.wixsite.com/vanni-aid'
+const scriptTag = `<script>var newSite = '${newSite}'</script>`;
 ---
 <title>VanniAid</title>
 <meta http-equiv="refresh" content={`1; url=${newSite}`}>
-<script new-site={newSite}>
-	var newSite = document.currentScript.getAttribute('new-site');
-	
+<body set:html={scriptTag} />
+<script>
     var path = location.pathname;
     if (path.startsWith('/')) path = path.slice(1)
-    if (path.endsWith('/')) path = path.slice(0, -1)
+    if (path.endsWith('/')) path = path.slice(0, -1);
     
     var site = `${newSite}/${path}`;
     if (site.startsWith('/')) site = site.slice(1)
